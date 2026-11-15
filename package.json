@@ -1,0 +1,17 @@
+{
+  "name": "lms",
+  "private": true,
+  "description": "Brightverse Academy LMS: admin, teacher and student dashboards",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "setup": "npm --prefix apps/api install && npm --prefix apps/web install",
+    "dev:api": "npm --prefix apps/api run start:dev",
+    "dev:web": "npm --prefix apps/web start",
+    "build": "npm --prefix apps/web run build && npm --prefix apps/api run build",
+    "start": "cd apps/api && npm run db:migrate:prod && WEB_DIST=../web/dist/web/browser node dist/main.js",
+    "test": "npm --prefix apps/api test && npm --prefix apps/web test -- --watch=false",
+    "test:ui": "npm run build && npm --prefix apps/web run e2e"
+  }
+}

@@ -1,0 +1,46 @@
+# Local PostgreSQL for development: docker compose up -d
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lms
+      POSTGRES_PASSWORD: lms
+      POSTGRES_DB: lms
+    ports:
+      - '5432:5432'
+    volumes:
+      - lms-db:/var/lib/postgresql/data
+      - ./docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U lms']
+      interval: 5s
+      retries: 10
+
+  # The whole system in Docker (optional): JWT_SECRET=$(openssl rand -base64 32) docker compose --profile app up --build
+  app:
+    profiles: [app]
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://lms:lms@db:5432/lms
+      # 32+ random characters; the app refuses to start without a proper one
+      JWT_SECRET: ${JWT_SECRET:-}
+      # First run only: the first admin account (password 12+ characters)
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      ADMIN_NAME: ${ADMIN_NAME:-}
+      # Email (optional): without SMTP_HOST nothing is sent
+      APP_URL: ${APP_URL:-http://localhost:3000}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+    ports:
+      - '3000:3000'
+
+volumes:
+  lms-db:

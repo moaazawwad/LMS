@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/.angular
+**/.env
+**/*.tsbuildinfo
+apps/web/e2e-report
+apps/web/e2e-results
+.git

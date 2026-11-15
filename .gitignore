@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.angular/
+*.tsbuildinfo
+coverage/
+.env
+.DS_Store
+apps/web/e2e-report/
+apps/web/e2e-results/
+.env.*
+!.env.example
+*.log
+apps/web/test-results/
+apps/web/playwright-report/
+Thumbs.db
+.claude-work/

@@ -1,0 +1,118 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792503732487,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792522935580,
+      "tag": "0001_change-requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792535305591,
+      "tag": "0002_attendance-and-extra-lessons",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792583537943,
+      "tag": "0003_plan-hours-and-teacher-pay",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793018390292,
+      "tag": "0004_invoice-void-and-teacher-payouts",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793020297195,
+      "tag": "0005_email-and-password-reset",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1793022757726,
+      "tag": "0006_staff-areas",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1793023131180,
+      "tag": "0007_homework-answers",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1793023751505,
+      "tag": "0008_academy-settings",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1793023953937,
+      "tag": "0009_homework-files",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1793535106241,
+      "tag": "0010_level-pay-rates",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1793550556474,
+      "tag": "0011_student-address-and-trial-lessons",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1793551729702,
+      "tag": "0012_curriculum-files",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1793552028226,
+      "tag": "0013_website-applications",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1793616674323,
+      "tag": "0014_teacher-profile",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "7",
+      "when": 1794491760000,
+      "tag": "0015_payments-holds-notifications-student-profile",
+      "breakpoints": true
+    }
+  ]
+}

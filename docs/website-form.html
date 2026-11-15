@@ -1,0 +1,71 @@
+<!--
+  Brightverse Academy: application form for the website.
+
+  Paste this where the form should appear (WordPress: a "Custom HTML" block;
+  Wix/Webflow: an "Embed code" element). Then change the two addresses below:
+
+    ACTION   = the LMS address + /api/public/applications
+               e.g. https://app.brightverseacademy.com/api/public/applications
+    REDIRECT = the page to show after sending (a "thank you" page on your site)
+
+  On the LMS server, set CORS_ORIGINS to your site, e.g.
+    CORS_ORIGINS=https://www.brightverseacademy.com,https://brightverseacademy.com
+  (the "thank you" page must be on one of those addresses).
+
+  Each application appears in the LMS under Requests → Website applications.
+-->
+<form class="bv-apply" method="post" action="https://app.brightverseacademy.com/api/public/applications">
+  <input type="hidden" name="redirect" value="https://www.brightverseacademy.com/thank-you" />
+  <input type="hidden" name="source" value="" />
+  <input type="hidden" name="utm" value="" />
+  <!-- left empty by people; spam bots fill it in -->
+  <div style="position:absolute;left:-9999px" aria-hidden="true">
+    <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <label>Full name * <input name="fullName" required minlength="2" maxlength="120" /></label>
+  <label>Email * <input name="email" type="email" required maxlength="200" /></label>
+  <label>Phone / WhatsApp <input name="phone" type="tel" maxlength="60" /></label>
+  <label>Country <input name="country" maxlength="80" /></label>
+  <label>What would you like to learn?
+    <select name="curriculum">
+      <option value="">Choose…</option>
+      <option>Quran reading</option>
+      <option>Quran memorisation</option>
+      <option>Arabic for kids</option>
+      <option>Arabic for adults</option>
+      <option>Islamic studies</option>
+    </select>
+  </label>
+  <label>Student's age (for children) <input name="studentAge" maxlength="60" /></label>
+  <label>Level <select name="level"><option value="">Not sure</option><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></label>
+  <label>Days and times that suit you <textarea name="preferredTimes" rows="2" maxlength="500"></textarea></label>
+  <label>Message <textarea name="message" rows="3" maxlength="2000"></textarea></label>
+  <input type="hidden" name="timezone" value="" />
+  <button type="submit">Send application</button>
+</form>
+
+<script>
+  // Fills in the visitor's time zone, the page and campaign tags (utm_*).
+  (function () {
+    var f = document.querySelector('form.bv-apply');
+    if (!f) return;
+    try { f.timezone.value = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+    f.source.value = location.href.split('?')[0];
+    var utm = location.search.slice(1).split('&').filter(function (p) { return p.indexOf('utm_') === 0; });
+    f.utm.value = utm.join('&');
+  })();
+</script>
+
+<style>
+  .bv-apply { display: grid; gap: 12px; max-width: 560px; font: inherit; }
+  .bv-apply label { display: grid; gap: 4px; font-weight: 600; }
+  .bv-apply input, .bv-apply select, .bv-apply textarea {
+    font: inherit; font-weight: 400; padding: 10px 12px; border: 1px solid #c9cfcb; border-radius: 8px;
+  }
+  .bv-apply button {
+    justify-self: start; padding: 12px 22px; border: 0; border-radius: 8px; background: #1d6a50; color: #fff;
+    font: inherit; font-weight: 700; cursor: pointer;
+  }
+  .bv-apply button:hover { background: #123f30; }
+</style>
